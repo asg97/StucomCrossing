@@ -6,5 +6,6 @@
 </head>
 <body>
 	<?php echo "Hola" ?>
+	<?php echo "segundo hola" ?>
 </body>
 </html>
