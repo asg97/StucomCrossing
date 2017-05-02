@@ -1,0 +1,62 @@
+$gradient: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)
+
+
+*
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+	font-family: Arial
+
+html
+	font-size: 16px
+
+body
+	height: 100vh
+	display: flex
+	justify-content: center
+	align-items: center
+
+h1,h2,h3,h4,h5,h6,label,legend,
+p, input[type="submit"], a
+	color: white
+	font-size: 1.2em
+
+// FORMINIT
+
+input
+	border: 0
+	outline: 0
+	border-radius: .5em
+	padding: .2em
+
+a
+	display: table
+	padding: .5em
+	text-decoration: none
+
+label, input[type="submit"]
+	display: block
+	margin-bottom: 1em
+
+fieldset 
+	border: 2px solid white
+	padding: 1em
+
+legend
+	font-size: 2em
+
+input[type="submit"]
+	background: $gradient
+	padding: .5em
+	cursor: pointer
+
+input[type="submit"]:hover
+	background: $gradient
+
+// FORMEND
+	
+.wrapper
+	width: 50%
+	background: $gradient
+	padding: 1em
+	border-radius: .5em

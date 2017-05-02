@@ -1,0 +1,2 @@
+Admin = Madtin, 123
+Users = 'userName' 1234 (todos)
