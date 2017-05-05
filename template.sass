@@ -38,9 +38,10 @@ label, input[type="submit"]
 	display: block
 	margin-bottom: 1em
 
-fieldset 
+fieldset
 	border: 2px solid white
 	padding: 1em
+	position: relative
 
 legend
 	font-size: 2em
@@ -49,9 +50,27 @@ input[type="submit"]
 	background: $gradient
 	padding: .5em
 	cursor: pointer
+	transition: all linear 0.2s
+	box-shadow: 0 0 0 1px transparent inset
 
 input[type="submit"]:hover
+	box-shadow: 0 0 0 1px #fff inset
+
+.volver-menu
+	padding: .5em
+	font-size: 15px
+	position: absolute
+	bottom: 5px
+	right: 5px
 	background: $gradient
+	transition: all linear 0.2s
+	border-radius: 10px
+	box-shadow: 0 0 0 1px transparent inset
+
+.volver-menu:hover
+	box-shadow: 0 0 0 1px #fff inset
+
+
 
 // FORMEND
 	

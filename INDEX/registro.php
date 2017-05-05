@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	$title = "Registro";
 
@@ -35,41 +35,40 @@
 		else {
 
 			registrarUsuario($userName, $pass, $realName, utf8_decode($surName));
-			// $content .= "<p>Usuario $userName registrado exitosamente.</p>";
-			// $content .= "<p>Redirigiendo a la página de Login..en <span id='seconds'>5</span></p>";
-			
-		}
+			$content .= "<p>Usuario $userName registrado exitosamente.</p>";
+			$content .= '<p>Redirigiendo a la página de login en <span id="seconds">5</span>..</p>';
+			$content .= '<script>
+
+								var seconds = document.querySelector("#seconds").innerHTML;
+						
+								var int = setInterval(function(){
+									seconds--;
+									document.querySelector("#seconds").innerHTML = seconds;
+						
+									if(seconds < 1) {
+										window.location.href = "login.php";
+										clearInterval(int);
+										document.querySelector("#seconds").innerHTML = "";
+									}
+								}, 1000)
+
+							</script>';
+				}
 
 		
 
 	}
-	$content .= '<span id="seconds">5</span>';
-	$content .= '<script> redirigePagina(); </script>';
 
-	$content	.=	 '</fieldset>';
-
-
-
-	$fecha = date("F j, Y, g:i a");
+	$content	.=	 '<a class=\'volver-menu\' href=\'index.php\'>Volver al menu</a>
+					</fieldset>';
 	
 	require_once("../template.php");
 
-?>
 
 
-<script>
 
-	
-	function redirigePagina() {
 
-		setInterval(function() {
-		seconds = parseInt(document.querySelector("#seconds").textContent);
-		seconds--;	            
-      seconds.textContent = seconds;
-      			     
-  		}, 1000);
 
-	}
 
-</script>
+
 

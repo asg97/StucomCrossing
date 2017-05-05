@@ -43,6 +43,7 @@ label, input[type="submit"] {
 fieldset {
   border: 2px solid white;
   padding: 1em;
+  position: relative;
 }
 
 legend {
@@ -53,10 +54,28 @@ input[type="submit"] {
   background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
   padding: .5em;
   cursor: pointer;
+  transition: all linear 0.2s;
+  box-shadow: 0 0 0 1px transparent inset;
 }
 
 input[type="submit"]:hover {
+  box-shadow: 0 0 0 1px #fff inset;
+}
+
+.volver-menu {
+  padding: .5em;
+  font-size: 15px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
   background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  transition: all linear 0.2s;
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px transparent inset;
+}
+
+.volver-menu:hover {
+  box-shadow: 0 0 0 1px #fff inset;
 }
 
 .wrapper {
