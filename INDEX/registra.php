@@ -2,6 +2,7 @@
 	
 	require_once("conexion.php");
 
+
 	function registrarUsuario($userName, $pass, $realName, $surName) {
 
 		$conn = conectar("msg");
@@ -30,23 +31,6 @@
 
 	}
 
-	// function verificarPass($userName, $normalPass) {
 
-	// 	$conn = conectar("msg");
-
-	// 	$sql "SELECT password FROM user WHERE username = '$userName' ";
-
-	// 	$result = mysqli_query($conn, $sql);
-
-	// 	$rows = mysqli_num_rows($result);
-
-	// 	desconectar($conn);
-
-	// 	if($rows > 0) {
-	// 		$row = mysqli_fetch_array($rows);
-	// 		return password_verify($row['password'], $normalPass);
-	// 	}	
-
-	// }
 
 
