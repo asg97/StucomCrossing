@@ -36,3 +36,15 @@
 	 	return $row["type"];
 
 	 }
+
+	 function registraInicioSesion($name, $date, $type) {
+
+	 	$conn = conectar("msg");
+
+	 	$sql = "INSERT INTO event VALUES(null,'$name','$date','$type')";
+
+	 	$rs = mysqli_query($conn, $sql);
+
+	 	return $rs;
+
+	 }

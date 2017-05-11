@@ -30,7 +30,8 @@ h2 {
   border-radius: 5px;
 }
 
-input {
+input,
+select {
   border: 0;
   outline: 0;
   border-radius: .5em;
@@ -95,8 +96,22 @@ input[type="submit"]:hover {
 }
 
 .wrapper {
-  width: 50%;
+  min-width: 800px;
   background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
   padding: 1em;
   border-radius: .5em;
+}
+
+table {
+  margin-bottom: 35px;
+}
+
+th {
+  font-size: 1.3em;
+}
+
+th, td {
+  padding: 1em;
+  text-align: center;
+  color: #fff;
 }

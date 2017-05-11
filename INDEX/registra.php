@@ -27,7 +27,23 @@
 
 		$rows = mysqli_num_rows($result);
 
+		desconectar($conn);
+
 		return ($rows > 0);
+
+	}
+
+	function registraUsuarioAdmin($userName, $pass, $realName, $surName, $type) {
+
+		$conn = conectar("msg");
+
+		$passCif = password_hash($pass, PASSWORD_DEFAULT);
+
+		$sql = "INSERT INTO user VALUES('$userName', '$passCif', '$realName', '$surName', $type)";
+
+		$result = mysqli_query($conn, $sql);
+
+		desconectar($conn);
 
 	}
 

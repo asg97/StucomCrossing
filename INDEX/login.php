@@ -37,10 +37,12 @@
 					switch(getTypeOfUser($userName)) {
 						case 0:
 							$_SESSION["normalete"] = $userName;
+							registraInicioSesion($userName, $fecha, 'I');
 							header("Location: userPage.php");
 							break;
 						case 1:
 							$_SESSION["theboss"] = $userName;
+							registraInicioSesion($userName, $fecha, 'I');
 							header("Location: adminPage.php");
 							break;
 					}

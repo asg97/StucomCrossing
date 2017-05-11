@@ -36,7 +36,7 @@
 
 			registrarUsuario($userName, $pass, $realName, utf8_decode($surName));
 			$content .= "<p>Usuario $userName registrado exitosamente.</p>";
-			$content .= '<p>Redirigiendo a la página de login en <span id="seconds">5</span>..</p>';
+			$content .= '<p>Redirigiendo a la página de login en <span id="seconds">3</span>..</p>';
 			$content .= '<script>
 
 								var seconds = document.querySelector("#seconds").innerHTML;
@@ -59,7 +59,7 @@
 
 	}
 
-	$content	.=	 '<a class=\'volver-menu\' href=\'index.php\'>Volver al menu</a>
+	$content	.=	 '<a class="volver-menu" href="index.php">Volver al panel de control</a>
 					</fieldset>';
 	
 	require_once("../template.php");

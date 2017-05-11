@@ -14,7 +14,7 @@ $title = "Página de usuario";
 
 $content = "<fieldset>
 					<legend>Página de $userName</legend>
-					<a href='cambiaPass.php'>Cambiar contraseña</a>
+					<a href='../UPDATE/cambiaPass.php'>Cambiar contraseña</a>
 					<a href='enviaMensaje.php'>Enviar mensaje</a>
 					<a href='bandejaMensajes.php'>Bandeja de entrada</a>
 					<a href='mensajesEnviados.php'>Ver mensajes enviados</a>
