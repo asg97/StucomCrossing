@@ -35,7 +35,7 @@ $content	.=	"			</select>
 						<label>Asunto
 							<input type='text' name='mensajeAsunto' required>
 						</label>
-						<label>
+						<label class='label-textarea'>
 							<textarea name='mensajeTexto' placeholder='Escribe tu mensaje..' required></textarea>
 						</label>
 						<input type='submit' value='Enviar' name='enviar'>

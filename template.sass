@@ -27,6 +27,7 @@ h1,h2,h3,h4,h5,h6,label,legend,
 p, input[type="submit"], a
 	color: white
 	font-size: 1.1em
+	outline: 0
 
 h2
 	font-size: 1.3em
@@ -43,6 +44,14 @@ textarea
 	outline: 0
 	border-radius: .5em
 	padding: .2em
+	box-shadow: 0 0 0 15px transparent
+	transition: all ease 0.4s
+
+input:hover,input:focus,
+select:hover,select:focus,
+textarea:hover,textarea:focus
+	box-shadow: 0 0 20px 2px rgb(15, 184, 173)
+	color: darken(rgb(15, 184, 173), 20%)
 
 textarea
 	width: 100%
@@ -56,7 +65,7 @@ a
 	text-decoration: none
 
 label, input[type="submit"]
-	display: block
+	display: table
 	margin-bottom: 1em
 
 fieldset
@@ -236,3 +245,6 @@ th, td
 	padding: .5em
 	text-align: center
 	color: #fff
+
+.label-textarea
+	display: block
