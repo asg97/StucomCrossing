@@ -16,6 +16,7 @@ $userName = $_SESSION["theboss"];
 $title = "Eliminar un usuario";
 
 if($num_rows > 0):
+
 $content = '<fieldset>
 					<legend>Eliminar un usuario</legend>
 					<form action="" method="post">
@@ -37,6 +38,7 @@ $content .= '<p class="response"></p>';
 
 
 $content .= 	'<a class="volver-menu" href="../INDEX/adminPage.php">Volver al panel de control</a>
+					</form>
 				</fieldset>';
 
 else:
@@ -62,6 +64,7 @@ require_once("../template.php");
 
 	if(document.querySelector("#listaUsuarios") !== null) {
 
+		var optionSelected;
 		var  indexValor;
 		var select = document.querySelector("#listaUsuarios");
 		var valor;
@@ -89,12 +92,22 @@ require_once("../template.php");
 
 					if(this.readyState === 4 && this.status === 200) {
 
-							var optionSelected = document.querySelector("#listaUsuarios").options[indexValor];
+							optionSelected = document.querySelector("#listaUsuarios").options[indexValor];
 
 							if(optionSelected !== undefined) {
 
-									document.querySelector(".response").innerHTML = this.responseText;
-									optionSelected.parentNode.removeChild(optionSelected);
+									if(this.responseText == "no") {
+
+										responseDiv.innerHTML = "No puedes borrar este usuario";
+
+									} else if(optionSelected.value === "- - -"){
+
+										responseDiv.innerHTML = '<p>Selecciona un usuario wey</p>';
+
+									} else  {		
+										responseDiv.innerHTML = this.responseText;
+										optionSelected.parentNode.removeChild(optionSelected);
+									}
 
 							} else {
 								responseDiv.innerHTML = '<p>Selecciona un usuario wey</p>';

@@ -1,5 +1,17 @@
 <?php 
 
+session_start();
+
+if( isset( $_SESSION["normalete"] ) ): 
+
+	header("Location: userPage.php");
+
+elseif( isset( $_SESSION["theboss"] ) ):
+
+	header("Location: adminPage.php");
+
+else:
+
 	
 	$title  = "Login";
 
@@ -8,7 +20,7 @@
 						<form action='login.php' method='post'>
 							<label>
 								Nombre de usuario
-								<input type='text' name='userName' required>
+								<input type='text' name='userName' autofocus required>
 							</label>
 							<label>
 								Contraseña
@@ -32,17 +44,15 @@
 
 				if(verificarPass($userName, $userPass))  {
 
-					session_start();
-
 					switch(getTypeOfUser($userName)) {
 						case 0:
 							$_SESSION["normalete"] = $userName;
-							registraInicioSesion($userName, $fecha, 'I');
+							registraEvento($userName, $fecha, 'I');
 							header("Location: userPage.php");
 							break;
 						case 1:
 							$_SESSION["theboss"] = $userName;
-							registraInicioSesion($userName, $fecha, 'I');
+							registraEvento($userName, $fecha, 'I');
 							header("Location: adminPage.php");
 							break;
 					}
@@ -65,3 +75,6 @@
 
 
 require_once("../template.php");
+
+
+endif;

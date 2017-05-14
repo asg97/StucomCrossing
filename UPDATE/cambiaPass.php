@@ -19,10 +19,10 @@ $title = "Cambiar contraseña";
 
 
 $content = "<fieldset>
-					<legend>Cambio de contraseña de $userName</legend>
+					<legend>Cambio de contraseña - $userName</legend>
 					<form action='' method='post'>
 						<label for=''>Introduce tu contraseña actual
-							<input type='password' name='currentPass' required>
+							<input type='password' name='currentPass' autofocus required>
 						</label>
 						<label>Introduce tu nueva contraseña
 							<input type='password' name='newPass' required>
@@ -50,12 +50,13 @@ $content .= "	<input type='submit' value='Cambiar contraseña' name='cambiar'>
 
 								} else {
 
-									updatePass($userName, $currentPass, $newPass);
+									updatePass($userName, $newPass);
+									$content .= "<p>Contraseña cambiada correctamente</p>";
 								}
 
 						} else {
 
-							$content .= "<p>La contraseña actual no es <correcta> </correcta></p>";
+							$content .= "<p>La contraseña actual no es correcta</p>";
 
 						}
 

@@ -8,13 +8,13 @@ $userName = $_SESSION["theboss"];
 
 //printa
 
-$title = "Registro de usuarios";
+$title = "Registrar un usuario";
 
 $content = 	'<fieldset>
 						<legend>Registrar un usuario</legend>
 						<form action="" method="post">	
 							<label>Nombre de usuario: 
-								<input type="text" name="userName" required>
+								<input type="text" name="userName" autofocus required>
 							</label>
 							<label>Nombre real: 
 								<input type="text" name="realName" required>

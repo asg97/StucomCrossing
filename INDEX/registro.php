@@ -1,18 +1,30 @@
 <?php
 
+session_start();
+
+if( isset( $_SESSION["normalete"] ) ): 
+
+	header("Location: userPage.php");
+
+elseif( isset( $_SESSION["theboss"] ) ):
+
+	header("Location: adminPage.php");
+
+else:
+
 	$title = "Registro";
 
 	$content = 	'<fieldset>
 						<legend>Registro</legend>
 						<form action="" method="post">	
 							<label>Nombre de usuario: 
-								<input type="text" name="userName" required>
+								<input type="text" name="userName" maxlength="10" autofocus required>
 							</label>
 							<label>Nombre real: 
-								<input type="text" name="realName" required>
+								<input type="text" name="realName" maxlength="20" required>
 							</label>
 							<label>Apellido: 
-								<input type="text" name="surName" required>
+								<input type="text" name="surName" maxlength="50" required>
 							</label>
 							<label>Contraseña: 
 								<input type="password" name="pass" required>
@@ -63,6 +75,9 @@
 					</fieldset>';
 	
 	require_once("../template.php");
+
+
+endif;
 
 
 

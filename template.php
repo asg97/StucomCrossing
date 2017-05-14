@@ -1,3 +1,4 @@
+<?php if($_SERVER["PHP_SELF"] == "/PHP/StucomMail/SELECT/listadoMensajes.php") $body_height = "height-modified" ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +6,11 @@
 	<title><?php echo $title ?></title>
 	<link rel="stylesheet" href="../template.css">
 	<link href="https://fonts.googleapis.com/css?family=Nixie+One" rel="stylesheet">
+	<link href="https://file.myfontastic.com/PNDAqk9wjzk9rDSKPMCiPn/icons.css" rel="stylesheet">
 </head>
-<body>
+<body <?php if(isset($body_height)) echo "class='$body_height'" ?> >
 	<div class="wrapper">
 		<?php echo $content; ?>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="../popup.js"></script>
 </body>
 </html>

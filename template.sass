@@ -1,5 +1,8 @@
-$gradient: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)
-$gradient-hover: linear-gradient(-141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)
+$gradient: linear-gradient(141deg, rgba(#0fb8ad, 0.5) 0%, rgba(#1fc8db, 0.5) 51%, rgba(#2cb5e8, 0.5) 75%)
+$gradient-hover: linear-gradient(-141deg, rgba(#0fb8ad, 0.6) 0%, rgba(#1fc8db, 0.6) 51%, rgba(#2cb5e8, 0.6) 75%)
+
+$gradient-no-t: linear-gradient(141deg, rgba(#0fb8ad, 0.8) 0%, rgba(#1fc8db, 0.8) 51%, rgba(#2cb5e8, 0.8) 75%)
+$gradient-no-t-hover: linear-gradient(-141deg, rgba(#0fb8ad, 0.8) 0%, rgba(#1fc8db, 0.8) 51%, rgba(#2cb5e8, 0.8) 75%)
 
 
 *
@@ -13,10 +16,12 @@ html
 	font-size: 16px
 
 body
-	height: 100vh
+	min-height: 100vh
 	display: flex
 	justify-content: center
 	align-items: center
+	background-image: url(IMG/bg.jpg)
+	background-size: cover
 
 h1,h2,h3,h4,h5,h6,label,legend,
 p, input[type="submit"], a
@@ -27,20 +32,27 @@ h2
 	font-size: 1.3em
 	padding: .5em
 	background: rgba(0, 0, 0, 0.5)
-	border-radius: 5px
 
 // FORMINIT
 
+
 input,
-select
+select,
+textarea
 	border: 0
 	outline: 0
 	border-radius: .5em
 	padding: .2em
 
+textarea
+	width: 100%
+	height: 150px
+	max-height: 150px
+	max-width: 100%
+	resize: none
 a
 	display: table
-	padding: .5em
+	padding: .3em
 	text-decoration: none
 
 label, input[type="submit"]
@@ -85,24 +97,142 @@ input[type="submit"]:hover
 
 // FORMEND
 
-.popup
-	background-color: #ffffff
-	padding: .5em
-	display: none
-	
+
 .wrapper
 	min-width: 800px
 	background: $gradient
 	padding: 1em
 	border-radius: .5em
 
+.menu-opciones
+	display: block
+	padding: 1em
+	transition: all ease 0.2s
+	text-align: center
+	font-size: 1.3rem
+
+.menu-opciones:hover
+	background-color: rgba(#000, 0.3)
+
+.opciones
+	padding: .5em;
+	transition: all ease 0.2s
+	line-height: 20px
+
+.opciones:hover
+	background-color: rgba(#000, 0.3);
+
+.adminPanel
+	margin: 15px 0
+
+.mensajePopup
+	display: none
+	position: fixed
+	background: rgba(0, 0, 0, 0.5)
+	width: 100%
+	height: 100vh
+	top: 0
+	left: 0
+	justify-content: center
+	align-items: center
+	color: #fff
+
+
+
+.mensajeText
+	padding: 1em
+	background: $gradient
+	position: relative
+	min-width: 600px
+	min-height: 400px
+	height: 500px
+	max-width: 800px
+	border-radius: .5em
+
+.height-modified
+	min-height: 100vh
+	margin: 4em 0
+
+.btnClose
+	position: absolute
+	display: block
+	z-index: 100
+	width: 50px
+	height: 50px
+	text-align: center
+	line-height: 30px
+	right: -20px
+	top: -20px
+	background: $gradient
+	border-radius: 50%
+	cursor: pointer
+	transition: all ease 0.4s
+	box-shadow: 0 0 0 1px #fff inset
+	display: flex
+	justify-content: center
+	align-items: center
+	background: $gradient-no-t
+
+
+
+.btnClose:hover
+	background: $gradient-no-t-hover
+	transform: rotate(360deg)
+
+.cta-ver
+	background: $gradient
+	transition: all linear 0.2s
+	border-radius: 10px
+	cursor: pointer
+	margin: 0 auto
+	box-shadow: 0 0 0 1px transparent inset
+
+
+.cta-ver:hover
+	background: $gradient-no-t-hover
+	box-shadow: 0 0 0 1px #fff inset
+
+.response > p
+	line-height: 30px
+
+.mensajeText fieldset
+	width: 100%
+	height: 100%
+
+
+.paginacion-container
+	display: flex
+	width: 100%
+	margin: 20px 0
+
+.paginacion
+	background: $gradient
+	box-shadow: 0 0 0 1px #fff inset
+	width: 40px
+	height: 40px
+	line-height: 30px
+	text-align: center
+
+.p-left
+	padding-left: 1em
+
+.paginacion:not(:last-child)
+	margin-right: 15px
+
+
+.paginacion:hover
+	background: $gradient-hover
+
 table
 	margin-bottom: 35px
+	margin-left: auto
+	margin-right: auto
+	width: 100%
 
 th
 	font-size: 1.3em
 
 th, td
-	padding: 1em
+	padding: .5em
 	text-align: center
 	color: #fff

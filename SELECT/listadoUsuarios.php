@@ -3,21 +3,21 @@
 session_start();
 
 require_once("../INDEX/userFunctions.php");
-$rows = listaUsuarios();
 
 if(!isset($_SESSION["theboss"])) header("Location: login.php");
 
 $userName = $_SESSION["theboss"];
 
+$rows = listaUsuarios($userName);
 //printa
 
 $title = "Listado de usuarios";
 
 $content = '<fieldset>
+					<legend>Listado de usuarios registrados</legend>
 					<table>
 						<tr>
 							<th>Nombre de usuario</th>
-							<th>Contraseña</th>
 							<th>Nombre</th>
 							<th>Apellido</th>
 							<th>Tipo</th>
@@ -27,10 +27,9 @@ $content = '<fieldset>
 
 							$content .= '<tr>';
 												$content .= '<td>'.$row["username"].'</td>';
-												$content .= '<td>'.$row["password"].'</td>';
 												$content .= '<td>'.$row["name"].'</td>';
 												$content .= '<td>'.mb_convert_encoding($row["surname"], "UTF-8", "ISO-8859-1").'</td>';
-												$content .= '<td>'.$row["type"].'</td>';
+												$content .= ($row["type"] == 0) ? "<td>Usuario</td>" : "<td>Administrador</td>";
 							$content .= '</tr>';
 
 						endwhile;

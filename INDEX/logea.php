@@ -37,7 +37,7 @@
 
 	 }
 
-	 function registraInicioSesion($name, $date, $type) {
+	 function registraEvento($name, $date, $type) {
 
 	 	$conn = conectar("msg");
 
