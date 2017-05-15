@@ -63,7 +63,7 @@
 
 		$conn = conectar("msg");
 
-		$sql = "SELECT * FROM message WHERE sender = '$sender' ";
+		$sql = "SELECT * FROM message WHERE sender = '$sender' ORDER BY date DESC";
 
 		$rs = mysqli_query($conn, $sql);
 
@@ -77,7 +77,7 @@
 
 	$conn = conectar("msg");
 
-	$sql = "SELECT * FROM message WHERE sender = '$sender' LIMIT $from,$to ";
+	$sql = "SELECT * FROM message WHERE sender = '$sender' ORDER BY date DESC LIMIT $from,$to ";
 
 	$rs = mysqli_query($conn, $sql);
 

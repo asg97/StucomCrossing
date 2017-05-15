@@ -10,6 +10,8 @@
 
 	// solo para obtener las variables de total páginas, registro
 	$rowsTotal = getSentMessages($userName);
+
+	$num_rows = mysqli_num_rows($rowsTotal);
 	
 
 	$back_din = (isset($_SESSION["theboss"])) ? "../INDEX/adminPage.php" : "../INDEX/userPage.php";
@@ -38,39 +40,51 @@
 
 	$title = "Mensajes enviados";
 
+	if($num_rows < 1):
 
-	$content = "<fieldset>
-						<legend>Mensajes enviados - $userName</legend>
-						<table>
-							<tr>
-								<th>Receptor</th>
-								<th>Fecha - Hora</th>
-								<th>Asunto</th>
-							</tr>";
+		$content = "<fieldset>
+							<legend>Mensajes enviados - $userName</legend>
+							<h1>No has enviado ningún mensaje aún -_-</h1>
+							<a href=\"$back_din\" class='volver-menu'>Volver al panel de control</a
+					</fieldset>";
 
-						while($row = mysqli_fetch_array($rowsLimit)):
-							$content .= "<tr>";
-								$content .= "<td>".$row["receiver"]."</td>";
-								$content .= "<td>".$row["date"]."</td>";
-								$content .= "<td>".$row["subject"]."</td>";
-							$content	.=	"</tr>";
-						endwhile;
+	else:
 
 
-	$content .= "	</table>
-						<a href=\"$back_din\" class='volver-menu'>Volver al panel de control</a>";
-						if($totalRows > $maxRows):
-	$content .= "	<p class='p-left'>Mostrando página $initPage de $totalPages</p>";
-						
-	$content .=   "<div class='paginacion-container p-left'>";
-						
-							for ($i=1; $i <= $totalPages ; $i++):						
-									$content .= "<a class='paginacion' href='?pag=".$i."'>$i</a>";
-							endfor;
+		$content = "<fieldset>
+							<legend>Mensajes enviados - $userName</legend>
+							<table>
+								<tr>
+									<th>Receptor</th>
+									<th>Fecha - Hora</th>
+									<th>Asunto</th>
+								</tr>";
 
-	$content .= "	</div>";
-						endif;
+							while($row = mysqli_fetch_array($rowsLimit)):
+								$content .= "<tr>";
+									$content .= "<td>".$row["receiver"]."</td>";
+									$content .= "<td>".$row["date"]."</td>";
+									$content .= "<td>".$row["subject"]."</td>";
+								$content	.=	"</tr>";
+							endwhile;
+
+
+		$content .= "	</table>
+							<a href=\"$back_din\" class='volver-menu'>Volver al panel de control</a>";
+							if($totalRows > $maxRows):
+		$content .= "	<p class='p-left'>Mostrando página $initPage de $totalPages</p>";
+							
+		$content .=   "<div class='paginacion-container p-left'>";
+							
+								for ($i=1; $i <= $totalPages ; $i++):						
+										$content .= "<a class='paginacion' href='?pag=".$i."'>$i</a>";
+								endfor;
+
+		$content .= "	</div>";
+							endif;
 	$content .= "</fieldset>";
+
+	endif;
 
 	require_once("../template.php");
 
