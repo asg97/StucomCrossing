@@ -13,6 +13,7 @@ import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.sql.Statement;
 import modelo.User;
+import modelo.Character;
 
 /**
  *
@@ -45,7 +46,7 @@ public class StucomCrossingDAO {
     
     
      if (existeUser(u)) {
-            throw new SQLException("ERROR: Ya existe un cocinero con ese nombre");
+            throw new SQLException("ERROR: Ya existe un usuario con ese nombre");
         } else {
             // Definimos la consulta
             String insert = "insert into user values (?, ?, ?, ?, ?, ?)";
@@ -58,6 +59,29 @@ public class StucomCrossingDAO {
             ps.setInt(4, u.getLevel());
             ps.setString(5, u.getPlace());
             ps.setInt(6, u.getPoints());
+            // Ejecutamos la consulta
+            ps.executeUpdate();
+            // cerramos recursos
+            ps.close();
+       }
+    }
+    public void insertarCharacter(Character c) throws SQLException{
+    
+    
+    
+     if (existeCharacter(c)) {
+            throw new SQLException("ERROR: Ya existe un personaje con ese nombre");
+        } else {
+            // Definimos la consulta
+            String insert = "insert into character values (?, ?, ?, ?)";
+            // Necesitamos preparar la consulta parametrizada
+            PreparedStatement ps = conexion.prepareStatement(insert);
+            // Le damos valor a los interrogantes
+            ps.setString(1, c.getName());
+            ps.setString(2, c.getStudy());
+            ps.setString(3, c.getPlace());
+            ps.setString(4, c.getPreference());
+            
             // Ejecutamos la consulta
             ps.executeUpdate();
             // cerramos recursos
@@ -77,7 +101,19 @@ public class StucomCrossingDAO {
         st.close();
         return existe;
 }
-  // Función que devuelve un cocinero a partir del nombre
+    private boolean existeCharacter(Character c) throws SQLException{
+        String select = "select*from character where name='" + c.getName() + "'";
+        Statement st=conexion.createStatement();
+        boolean existe =false;
+        ResultSet rs = st.executeQuery(select);
+        if(rs.next()){
+        existe=true;
+        }
+        rs.close();
+        st.close();
+        return existe;
+}
+  // Función que devuelve un User a partir del nombre
     public User getUserByNombre(String username) throws  SQLException {
         User aux = new User(username);
         if (!existeUser(aux)) {
