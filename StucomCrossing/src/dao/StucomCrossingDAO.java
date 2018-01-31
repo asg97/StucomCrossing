@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import modelo.User;
 import modelo.Character;
+import modelo.Item;
 
 /**
  *
@@ -73,7 +74,7 @@ public class StucomCrossingDAO {
             throw new SQLException("ERROR: Ya existe un personaje con ese nombre");
         } else {
             // Definimos la consulta
-            String insert = "insert into character values (?, ?, ?, ?)";
+            String insert = "insert into stucomcrossing.character values (?, ?, ?, ?)";
             // Necesitamos preparar la consulta parametrizada
             PreparedStatement ps = conexion.prepareStatement(insert);
             // Le damos valor a los interrogantes
@@ -88,6 +89,25 @@ public class StucomCrossingDAO {
             ps.close();
        }
     }
+    public void insertarItem(Item i) throws SQLException{
+    
+            // Definimos la consulta
+            String insert = "insert into item values (?, ?, ?, ?,?)";
+            // Necesitamos preparar la consulta parametrizada
+            PreparedStatement ps = conexion.prepareStatement(insert);
+            // Le damos valor a los interrogantes
+            ps.setString(1, i.getName());
+            ps.setDouble(2, i.getPrice());
+            ps.setDouble(3, i.getSaleprice());
+            ps.setString(4, i.getType());
+             ps.setString(5, i.getStyle());
+            
+            // Ejecutamos la consulta
+            ps.executeUpdate();
+            // cerramos recursos
+            ps.close();
+       }
+    
     
     private boolean existeUser(User u) throws SQLException{
         String select = "select*from user where username='" + u.getUsername() + "'";
@@ -102,7 +122,7 @@ public class StucomCrossingDAO {
         return existe;
 }
     private boolean existeCharacter(Character c) throws SQLException{
-        String select = "select*from character where name='" + c.getName() + "'";
+        String select = "select*from stucomcrossing.character where name='" + c.getName() + "'";
         Statement st=conexion.createStatement();
         boolean existe =false;
         ResultSet rs = st.executeQuery(select);
